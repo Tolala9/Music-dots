@@ -199,9 +199,13 @@
 		//in array add animation for point: changing color and scale
 		function onFrame(event) {
 			for (var i = 0; i < circles.length; i++) {
-				console.log(circles[i]);
 				circles[i].fillColor.hue += 1;
 				circles[i].scale(0.9);
+				if (circles[i].area < 1) {
+					circles[1].remove(); //remove circles from canvas
+					circles.slice(i, 1); //remove circles from array
+					console.log(circles);
+				}
 			}
 		}
 
