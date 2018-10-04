@@ -8,16 +8,28 @@
 
 	<script type="text/paperscript" canvas="myCanvas">
 
-		function onKeyDown(event) {
-			var maxPoint = new Point(view.size.height, view.size.width);
-			var randomPoint = Point.random();
-			var point = maxPoint * randomPoint;
-			console.log(maxPoint);
+		var circles = [];
 
-			new Path.Circle(point, 10).fillColor = 'green';
+		function onKeyDown(event) {
+			var maxPoint = new Point(view.size.width, view.size.height); //define coordinate for your window
+			var randomPoint = Point.random(); // create random number
+			var point = maxPoint * randomPoint; // create random coordinates for new point
+			var newCircle = new Path.Circle(point, 400); // create new point
+
+			newCircle.fillColor = 'green'; // add color for new point
+
+			circles.push(newCircle); //push new point to array
 			
 		}
 
+		//in array add animation for point: changing color and scale
+		function onFrame(event) {
+			for (var i = 0; i < circles.length; i++) {
+				console.log(circles[i]);
+				circles[i].fillColor.hue += 1;
+				circles[i].scale(0.92);
+			}
+		}
 
 
 
