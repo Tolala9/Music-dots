@@ -7,11 +7,12 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.15/howler.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/circles.css">
 
+	<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+
 	<script type="text/paperscript" canvas="myCanvas">
 
-		var sound = new Howl({
-			src: ['sounds/bubbles.mp3']
-		});
 
 		//define the object for dots with sound and colors 
 		var keyData = {
@@ -190,11 +191,8 @@
 			circles.push(newCircle); //push new point to array
 		}
 		
-
-
-
-
 	}
+
 
 		//in array add animation for point: changing color and scale
 		function onFrame(event) {
@@ -202,8 +200,8 @@
 				circles[i].fillColor.hue += 1;
 				circles[i].scale(0.9);
 				if (circles[i].area < 1) {
-					circles[1].remove(); //remove circles from canvas
-					circles.slice(i, 1); //remove circles from array
+					circles[i].remove(); //remove circles from canvas
+					circles.splice(i, 1); //remove circles from array
 					console.log(circles);
 				}
 			}
